@@ -1,0 +1,97 @@
+[project]
+name = "dev-tools"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "tomli>=2.2.1",
+]
+
+[[project.authors]]
+name = "TLV Data-Science"
+
+[build-system]
+requires = ["setuptools>=78.1.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "build>=1.2.2.post1",
+    "isort>=6.0.1",
+    "mypy>=1.15.0",
+    "myst-parser>=4.0.1",
+    "pytest>=8.3.5",
+    "pytest-cov>=6.1.0",
+    "pytest-mock>=3.14.0",
+    "ruff>=0.11.2",
+    "sphinx>=8.2.3",
+    "sphinx-pyproject>=0.3.0",
+    "sphinx-rtd-theme>=2.0.0",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["dev-tools/"]
+omit = [
+    "tests/*",
+    "setup.py",
+    "*.pyc",
+    "*.pyo",
+    "*.pyd",
+    "__pycache__/*"
+]
+
+[tool.coverage.paths]
+source = ["dev-tools/"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 20
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "pass",
+    "raise ImportError"
+]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+    "ignore::ImportWarning",
+    "ignore::UserWarning",
+    "ignore::ResourceWarning"
+]
+
+[tool.sphinx-pyproject]
+project = 'dev-tools'
+copyright = '2025, data-science team'
+author = 'data-science team'
+language = "en"
+package_root = "dev-tools"
+templates_path = ['_templates']
+exclude_patterns = [
+    "_build",
+    ".DS_Store"
+]
+extensions = [
+    "sphinx.ext.duration",
+    "sphinx.ext.doctest",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.intersphinx",
+    'myst_parser',
+    'sphinx.ext.autosectionlabel',
+    'sphinx.ext.napoleon',
+    'sphinx_rtd_theme'
+]
+html_theme = 'sphinx_rtd_theme'
+html_static_path = ['_static']
+autosectionlabel_prefix_document = true
+
