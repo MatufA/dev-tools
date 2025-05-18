@@ -1,0 +1,15 @@
+[Unit]
+Description=jupyter-lab
+
+[Service]
+Type=simple
+PIDFile=/run/jupyter.pid
+ExecStart=/etc/systemd/lunch_jupyterlab.sh
+WorkingDirectory=/home/ec2-user
+User=ec2-user
+Group=ec2-user
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
